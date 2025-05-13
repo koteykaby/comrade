@@ -1,0 +1,148 @@
+{
+    "rlink": {
+        "id": 1,
+        "accountName": "/steam/76561198617872072",
+        "accountType": 3,
+        "ssoID": -1,
+        "ssoStatus": 0,
+        "country": "us",
+        "currency": "usd",
+        "spamAllowed": 2,
+        "metaData": null
+    },
+    "defaultProfileInfo": {
+        "entityVersion": 517,
+        "id": 1,
+        "name": "/steam/76561198617872072",
+        "metaData": "",
+        "clanName": "",
+        "personalStatGroupID": 1,
+        "xp": 0,
+        "level": 1,
+        "leaderboardRegionID": 0,
+        "banInfo": null,
+        "platformUserID": "76561198617872072",
+        "accountType": 3,
+        "linkedPlatformAccounts": []
+    },
+    "leaderboardStats": [
+        {
+            "statGroupID": 1,
+            "leaderboardID": 1,
+            "wins": 32,
+            "losses": 1,
+            "streak": 2,
+            "disputes": 0,
+            "drops": 1,
+            "ranking": -1,
+            "rankTotal": -1,
+            "regionRanking": -1,
+            "regionRankTotal": -1,
+            "level": -1,
+            "rating": 984,
+            "counters": "{}",
+            "itemUseCount": "{}",
+            "lastMatchTime": 1747160542
+        },
+        {
+            "statGroupID": 1,
+            "leaderboardID": -1,
+            "wins": 4,
+            "losses": 4,
+            "streak": -1,
+            "disputes": 0,
+            "drops": 0,
+            "ranking": -1,
+            "rankTotal": -1,
+            "regionRanking": -1,
+            "regionRankTotal": -1,
+            "level": -1,
+            "rating": 1000,
+            "counters": "{}",
+            "itemUseCount": "{}",
+            "lastMatchTime": 1747160542
+        },
+        {
+            "statGroupID": 1,
+            "leaderboardID": 0,
+            "wins": 1,
+            "losses": 0,
+            "streak": 1,
+            "disputes": 0,
+            "drops": 0,
+            "ranking": -1,
+            "rankTotal": -1,
+            "regionRanking": -1,
+            "regionRankTotal": -1,
+            "level": -1,
+            "rating": 1000,
+            "counters": "{}",
+            "itemUseCount": "{}",
+            "lastMatchTime": 1747160542
+        }
+    ],
+    "stats": [
+        {
+            "statID": 1,
+            "profileID": 1,
+            "value": 4,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 2,
+            "profileID": 1,
+            "value": 6,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 3,
+            "profileID": 1,
+            "value": 10,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 4,
+            "profileID": 1,
+            "value": 6,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 5,
+            "profileID": 1,
+            "value": 11,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 6,
+            "profileID": 1,
+            "value": 3,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 7,
+            "profileID": 1,
+            "value": 1,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        },
+        {
+            "statID": 10,
+            "profileID": 1,
+            "value": 1,
+            "metadata": "",
+            "lastUpdated": 1747160542
+        }
+    ],
+    "playerdata": {
+        "categoryIDs": [],
+        "characterData": "[[1,0,0,0,0,0,0,0,1747160542]]",
+        "enableCrossplay": 1,
+        "privacySettings": []
+    }
+}

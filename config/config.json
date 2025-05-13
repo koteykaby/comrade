@@ -1,0 +1,11 @@
+{
+    "api": {
+        "address": "127.0.0.1",
+        "port": 443
+    },
+    "battleserver": {
+        "address": "127.0.0.1",
+        "ports": [27021, 27111, 27211],
+        "name": "soviet"
+    }
+}
