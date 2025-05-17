@@ -1,33 +1,32 @@
-# Server emulator for Company of Heroes 2
+# Dedicated Server Emulation stuff for Company of Heroes 2
 
-Mainly focuses on making the game work on LAN without any services relation
+This project is a community-driven emulator for original game services.
+Main goal is to make it better playable in LAN parties or in any place where proper internet connection is a problem.
 
-> [!] IMPORTANT
-> Currently supports only Steam version. Pirated copies is not supported and not will be.
+> [!IMPORTANT]
+> Currently have support only for Steam (Windows) version.
 
 ## Usage
 
-Here is a small guide for deploying and connecting to the server
+Download latest server files from sources or [release](https://github.com/koteykaby/comrade/releases/latest)
 
 ### Host
 
-1. Generate SSL cetificate and key with `genssl.py` tool, share it with clients
-2. Put it to the `ssl` folder in the comrade main folder
-3. Edit `config/config.json` (specify your host IP-address)
-4. Run api with `api/api.py` (`python -m api.api`)
+1. Install depedencies with `pip install -r requirements.txt`
+2. Generate self-signed SSL certificates. You can use `tools/create_ssl.py` for it. Put certificate and private key to the `ssl` folder in the project root
+3. Modify config file in the `config` folder for your needs (change IP's)
+4. Open port tcp/443 for your clients (allow in the firewall)
+5. Run API with `python -m api.api`
 
 ### Client
 
-1. Install SSL certificate from the host to your system
-2. Add `coh2-api.reliclink.com` to the your hosts file
-3. Try to start the game
-
-## Account creation
-
-There is no any account creation tool for now, so you need to do it manually.
-To do it, open the `db/example.json` with your text editor and change all id's, steamid's and statGroupIDs for your needs.
-Save it with your steamid in the name, for example `76561198617872072.json`
+1. Modify your hosts file with binding original to your host IP. For example `127.0.0.1 coh2-api.reliclink.com`. Also run `ipconfig /flushdns` command to prevent connecting issues
+2. Install self-signed SSL certificates from host to your system
+3. Try to run the game. API will automatically create account for you
 
 ## Progress
 
-Now you can get into the game menu and play SP missions (Theater of War, Campaign), but skirmishes still doesn't work.
+For now is implemented:
+
+- Entering main menu, fetch some data
+- Start any singleplayer game (Campaign, Theater of War) (no skirmishes yet)

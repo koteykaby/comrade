@@ -2,34 +2,30 @@ from fastapi import FastAPI, Response
 import uvicorn
 import json
 from time import sleep
-from api.game.login import platformlogin
-from api.game.account.getProfileName import getProfileName
-from api.game.login import readSession
-from api.main import storage
-from api.utils.datautils import relicjson, read_datafile
+
+from api.core.utils.datautils import read_datafile, relicjson
+from api.core import auth, sessions, inventory, responses, chat
 
 api = FastAPI()
 
 @api.post('/game/login/platformlogin')
 async def game_login_platformlogin(platformUserID, alias):
-    data = platformlogin.authorize(steamid=platformUserID,
-                                   username=alias,
-                                   sid=storage.lastsession,
-                                   mid=values['match_id'])
+    try:
+        data = auth.steam_auth(platformUserID, alias)
+    except AttributeError:
+        auth.steam_create(steamid=platformUserID)
+    finally:
+        data = auth.steam_auth(platformUserID, alias)
     resp = relicjson(data)
     return Response(content=resp)
 @api.post('/game/login/readSession')
 async def game_login_readSession(sessionID, ack):
-    uservars = storage.users[f'{sessionID}']
-    if int(ack)==0:
-        data = relicjson(readSession.CreatePresenceMessage(steamid=uservars['steamID'],
-                                                           username=uservars['username']))
-        resp = f'{int(ack)+1},{data}'
-        print(resp)
-    if int(ack)!=0:
-        resp = f'{int(ack),[]}'
-        sleep(10)
+    data = sessions.client_readSession_handle(sessionID=sessionID, ack=int(ack))
+    resp = data
     return Response(content=resp)
+@api.post('/game/login/logout')
+async def game_login_logout(sessionID):
+    sessions.client_sessionClear(sessionID)
 
 @api.get('/game/news/getNews')
 async def game_news_getNews():
@@ -46,18 +42,15 @@ async def game_Achievement_getAvailableAchievements(signature):
 
 @api.get('/game/account/getProfileName')
 async def game_account_getProfileName(sessionID):
-    uservars = storage.users[f'{sessionID}']
-    resp = getProfileName(steamid=uservars['steamID'],
-                          username=uservars['username'])
-    return Response(content=relicjson(resp))
+    resp = responses.data_getProfileName(sessionID=sessionID)
+    return Response(resp)
 @api.post('/game/chat/getChatChannels')
 async def game_chat_getChatChannels():
     resp = "[0,[],100]"
     return Response(content=resp)
 @api.get('/game/chat/getOfflineMessages')
 async def game_chat_getOfflineMessages(sessionID):
-    uservars = storage.users[f'{sessionID}']
-    resp = f'[0,[],[["{uservars['profileID']}",[]]],[],[],[]]'
+    resp = chat.resp_getOfflineMessages(sessionID=sessionID)
     return Response(content=resp)
 
 @api.post('/game/relationship/setPresenceProperty')

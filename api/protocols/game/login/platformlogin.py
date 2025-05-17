@@ -1,13 +1,6 @@
 from dataclasses import dataclass
-import json
-from api.structures.p_struct import *
-from api.utils.datautils import *
-from api.main import storage
-import time
-
-cfg_rl = json.load(open('data/reliclink.json', 'r'))
-cfg = json.load(open('config/config.json', 'r'))
-cfg_b = cfg['battleserver']
+from time import time
+from api.protocols.game.login.structures import *
 
 @dataclass
 class player_data:
@@ -35,48 +28,47 @@ class platformlogin:
     unk6: int
     battleserver: any
     
-def authorize(steamid=str,
-              username=str,
-              sid=str,
-              mid=int,
-              atime=int(time.time())):
-    with open(f'db/{steamid}.json', 'r') as f:
-        account_data = json.load(f)
-        f.close()
-        
-    u_rlink = account_data['rlink']
-    u_profile = account_data['defaultProfileInfo']
-    u_leaderboards = account_data['leaderboardStats']
-    u_stats = account_data['stats']
-    u_playerdata = account_data['playerdata']
+def do_platformlogin(username,
+                     sessionid,
+                     last_matchID,
+                     cfg_b,
+                     client_config,
+                     profileid,
+                     statgroupid,
+                     u_rlink,
+                     u_profile,
+                     u_leaderboardStats,
+                     u_stats,
+                     u_playerData, 
+                     banState):
     
     result = platformlogin(
             unk=0,
-            sessionID=str(sid),
-            matchID=mid,
-            auth_time=atime,
+            sessionID=str(sessionid),
+            matchID=last_matchID,
+            auth_time=int(time()),
             rlink_account=rlink_info(
-                **u_rlink
+                **u_rlink, id=profileid
             ),
             profileinfo=[profile(
-                **u_profile, alias=username
+                **u_profile, alias=username, id=profileid, personalStatGroupID=statgroupid, banInfo=banState
             )],
             unk1=0,
             unk2=0,
             unk3=None,
             unk4=[],
-            config=cfg_rl,
+            config=client_config,
             playerdata=(
                 0,
-                profile(**u_profile, alias=username),
+                profile(**u_profile, alias=username, id=profileid, personalStatGroupID=statgroupid, banInfo=banState),
                 [0,[],[],[],[],[],[],[]], # friends field?
-                [list(obj.values()) for obj in u_leaderboards],
+                [list(obj.values()) for obj in u_leaderboardStats],
                 [list(obj.values()) for obj in u_stats],
                 None,
-                u_playerdata['categoryIDs'],
-                u_playerdata['characterData'],
-                u_playerdata['enableCrossplay'],
-                u_playerdata['privacySettings']
+                u_playerData['categoryIDs'],
+                str(u_playerData['characterData']),
+                u_playerData['enableCrossplay'],
+                u_playerData['privacySettings']
             ),
             unk5=[],
             unk6=0,
@@ -106,10 +98,5 @@ def authorize(steamid=str,
                     cfg_b['ports'][2]
                 ]
             )
-        )
-    storage.create_session(steamID=steamid,
-                           username=username,
-                           profileID=u_profile['id'],
-                           sessionid=sid)
-
+    )
     return result
