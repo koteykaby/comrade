@@ -6,6 +6,10 @@
     "battleserver": {
         "address": "127.0.0.1",
         "ports": [27021, 27111, 27211],
-        "name": "soviet"
+        "name": "comrade"
+    },
+    "ssl": {
+        "cert": "ssl/certificate.pem",
+        "key": "ssl/private_key.pem"
     }
 }

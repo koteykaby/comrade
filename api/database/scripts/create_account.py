@@ -1,24 +1,14 @@
-from sqlalchemy.exc import IntegrityError
+from api.database.main import create_session
+from api.database.models.account import Account
 from time import time
+import json
+from sqlalchemy.exc import IntegrityError
 
-from api.databases.db import *
+i_items = json.load(open('api/database/templates/i_items.json', 'r'))
+i_locations = json.load(open('api/database/templates/i_locations.json', 'r'))
 
-def get_account_id(db_session, steamid=None):
-    if steamid is not None:
-        account = db_session.query(Account).filter_by(steamid=steamid).first()
-        return account.id
-    return None  
-
-def get_account_data(db_session, account_id=None, steamid=None):
-    if account_id is not None:
-        account = db_session.query(Account).filter_by(id=account_id).first()
-        return account.data
-    elif steamid is not None:
-        account = db_session.query(Account).filter_by(steamid=steamid).first()
-        return account.data
-    return None    
-
-def create_account(db_session, steamID, country): 
+def create_account(steamID, country): 
+    db_session = create_session()
     newAccount = Account(
         steamid=steamID,
         data={
@@ -95,7 +85,9 @@ def create_account(db_session, steamID, country):
                 ]],
                 "privacySettings": [] 
             }
-        }
+        },
+        inventory=i_items,
+        item_locations=i_locations
     )
     
     try:
@@ -106,13 +98,24 @@ def create_account(db_session, steamID, country):
         data['player_data']['characterData'][0][0] = newAccount.id
         data['leaderboardStats'][0]['statGroupID'] = newAccount.id
         
+        inventory = newAccount.inventory
+        for i in inventory:
+            i['profileID'] = newAccount.id
+        
         for stat in data['stats']:
             stat['profileID'] = newAccount.id
             
         from sqlalchemy.orm.attributes import flag_modified
         flag_modified(newAccount, "data")
+        flag_modified(newAccount, "inventory")
         
         db_session.commit()  
+        
+        print(newAccount.id,
+              newAccount.steamid,
+              newAccount.data,
+              newAccount.inventory,
+              newAccount.item_locations)
         
         return newAccount.id
     except IntegrityError:

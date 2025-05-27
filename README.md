@@ -3,6 +3,8 @@
 This project is a community-driven emulator for original game services.
 Main goal is to make it better playable in LAN parties or in any place where proper internet connection is a problem.
 
+If you want to discuss about it - join our [Discord community](https://discord.gg/W4uRYPkZr2)!
+
 > [!IMPORTANT]
 > Currently have support only for Steam (Windows) version.
 

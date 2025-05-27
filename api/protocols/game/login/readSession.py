@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from api.protocols.game.login.structures import PresenceProfile
+from api.protocols.game.login.structures import PresenceProfile, PlatformSessionUpdateMessage
 
 @dataclass
 class PresenceMessageStruct:
@@ -29,6 +29,21 @@ def do_PresenceMessage(profileid,
             presenceLocalized=None,
             presencePropertyInfo=[]
         )
+        ]
+    )]]
+    return result
+
+def do_PlatformSessionUpdateMessage_ReadSessionMessage(profileid,
+                                                       lobbyid,
+                                                       platformlobbyid):
+    result = [[PlatformSessionUpdateMessage(
+        status_code=0,
+        description="PlatformSessionUpdateMessage",
+        host_id=profileid,
+        lobby_ids=[
+            lobbyid,
+            "0",
+            platformlobbyid
         ]
     )]]
     return result

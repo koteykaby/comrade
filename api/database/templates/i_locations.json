@@ -1,0 +1,123 @@
+[
+    {
+        "id": 1,
+        "entityVersion": 0,
+        "locationID": 0,
+        "categoryID": 0,
+        "maxItems": 2000,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 0,
+        "tracksMoves": 0
+    },
+    {
+        "id": 2,
+        "entityVersion": 0,
+        "locationID": 1,
+        "categoryID": 1,
+        "maxItems": 1,
+        "locked": 1,
+        "isPublic": 0,
+        "isForMatch": 0,
+        "tracksMoves": 0
+    },
+    {
+        "id": 3,
+        "entityVersion": 0,
+        "locationID": 2,
+        "categoryID": 1001,
+        "maxItems": 6,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 4,
+        "entityVersion": 0,
+        "locationID": 3,
+        "categoryID": 1002,
+        "maxItems": 3,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 5,
+        "entityVersion": 0,
+        "locationID": 4,
+        "categoryID": 1005,
+        "maxItems": 3,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 6,
+        "entityVersion": 0,
+        "locationID": 5,
+        "categoryID": 1011,
+        "maxItems": 1,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 7,
+        "entityVersion": 0,
+        "locationID": 6,
+        "categoryID": 1012,
+        "maxItems": 1,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 8,
+        "entityVersion": 0,
+        "locationID": 7,
+        "categoryID": 1015,
+        "maxItems": 3,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 9,
+        "entityVersion": 0,
+        "locationID": 9,
+        "categoryID": 4,
+        "maxItems": 1000,
+        "locked": 1,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 0
+    },
+    {
+        "id": 10,
+        "entityVersion": 0,
+        "locationID": 8,
+        "categoryID": 1017,
+        "maxItems": 1,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    },
+    {
+        "id": 11,
+        "entityVersion": 0,
+        "locationID": 10,
+        "categoryID": 1019,
+        "maxItems": 5,
+        "locked": 0,
+        "isPublic": 0,
+        "isForMatch": 1,
+        "tracksMoves": 1
+    }
+]

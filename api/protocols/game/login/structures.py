@@ -91,3 +91,10 @@ class PresenceProfile:
     presenceID: int
     presenceLocalized: None
     presencePropertyInfo: list
+    
+@dataclass
+class PlatformSessionUpdateMessage:
+    status_code: int
+    description: str
+    host_id: int
+    lobby_ids: any

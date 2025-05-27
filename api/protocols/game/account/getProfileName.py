@@ -1,8 +1,6 @@
 from api.protocols.game.login.structures import profile
 from dataclasses import dataclass
 
-from api.core.utils.datautils import relicjson
-
 @dataclass
 class get_profile_name:
     unk: int
@@ -17,9 +15,9 @@ def getProfileName(u_profile,
         p=[profile(
             **u_profile,
             id=profileid, 
-            alias=username,
+            alias=str(username),
             personalStatGroupID=profileid,
             banInfo=banInfo
         )]
     )
-    return relicjson(result)
+    return result
