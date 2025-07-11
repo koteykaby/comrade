@@ -23,7 +23,7 @@ Here is simple start guide to make it work locally
 
 1. **Clone repository** and unpack it somewhere
 2. **Generate SSL certificate** via `tools/create_ssl.py` and put it to the `ssl` folder
-3. **Run the server* via `python -m api.api` and `python -m battleserver.server` (you can also use `scripts/runner.bat`)
+3. **Run the server** via `python -m api.api` and `python -m battleserver.server` (you can also use `scripts/runner.bat`)
 
 ### Client Setup
 
@@ -37,7 +37,7 @@ Here is simple start guide to make it work locally
 
 ## Progress
 
-I think almost all is done for actual playing, but correctly it is missing correct battleserver implementation (packet structure not fully understood). If you have idea - feel free to countribute
+I think almost all is done for actual playing, but currently it is missing correct battleserver implementation (packet sending/modifying not fully understood). If you have idea - feel free to countribute!
 
 For now is implemented:
 
