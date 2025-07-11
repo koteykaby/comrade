@@ -3,3 +3,4 @@ sqlalchemy
 cryptography
 zlib
 hexdump
+uvicorn

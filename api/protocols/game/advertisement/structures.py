@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from api.models.advertisement import Lobby
 
 @dataclass
 class Peer:
@@ -24,3 +25,23 @@ class battleserver_authtoken:
     unk: int
     unk1: str
     
+@dataclass
+class AdvertisementsList:
+    status_code: int
+    advertisements: any
+    unknown_null: list
+    
+@dataclass
+class get_advertisements_resp:
+    status_code: int
+    advertisements: any
+    
+@dataclass
+class join_advertisement_resp:
+    status_code: int
+    route: str
+    address: str
+    port1: int
+    port2: int
+    port3: int
+    peers: any

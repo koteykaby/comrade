@@ -7,7 +7,7 @@ from sqlalchemy.exc import IntegrityError
 i_items = json.load(open('api/database/templates/i_items.json', 'r'))
 i_locations = json.load(open('api/database/templates/i_locations.json', 'r'))
 
-def create_account(steamID, country): 
+def create_account(steamID, country, username): 
     db_session = create_session()
     newAccount = Account(
         steamid=steamID,
@@ -26,6 +26,7 @@ def create_account(steamID, country):
                 "entityVersion": 517,
                 "name": "/steam/" + str(steamID), 
                 "metaData": "",
+                "alias": str(username),
                 "clanName": "",
                 "xp": 0,
                 "level": 1,
@@ -111,11 +112,11 @@ def create_account(steamID, country):
         
         db_session.commit()  
         
-        print(newAccount.id,
-              newAccount.steamid,
-              newAccount.data,
-              newAccount.inventory,
-              newAccount.item_locations)
+        #print(newAccount.id,
+        #      newAccount.steamid,
+        #      newAccount.data,
+        #      newAccount.inventory,
+        #      newAccount.item_locations)
         
         return newAccount.id
     except IntegrityError:

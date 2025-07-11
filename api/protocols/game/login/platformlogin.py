@@ -28,7 +28,7 @@ class platformlogin:
     unk6: int
     battleserver: any
     
-def do_platformlogin(username,
+def do_platformlogin(#username,
                      sessionid,
                      last_matchID,
                      cfg_b,
@@ -51,7 +51,7 @@ def do_platformlogin(username,
                 **u_rlink, id=profileid
             ),
             profileinfo=[profile(
-                **u_profile, alias=username, id=profileid, personalStatGroupID=statgroupid, banInfo=banState
+                **u_profile, id=profileid, personalStatGroupID=statgroupid, banInfo=banState
             )],
             unk1=0,
             unk2=0,
@@ -60,8 +60,8 @@ def do_platformlogin(username,
             config=client_config,
             playerdata=(
                 0,
-                profile(**u_profile, alias=username, id=profileid, personalStatGroupID=statgroupid, banInfo=banState),
-                [0,[],[],[],[],[],[],[]], # friends field?
+                profile(**u_profile, id=profileid, personalStatGroupID=statgroupid, banInfo=banState),
+                [0,[],[],[],[],[],[],[]], # friends field
                 [list(obj.values()) for obj in u_leaderboardStats],
                 [list(obj.values()) for obj in u_stats],
                 None,

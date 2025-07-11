@@ -1,0 +1,10 @@
+13 01 01 => return
+13 02 01 => peer 02 -> peer 01
+13 01 02 => peer 01 -> peer 02
+10 01 01 => broadcast
+14 00 0b 25 00 00 00 00 ping => return
+
+13/10 => opcode
+01/02 => peer id
+02/01 => peer id
+

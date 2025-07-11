@@ -14,9 +14,10 @@ client_config = json.load(open('data/reliclink.json'))
 
 user_session_id_counter = 0
 
-def steam_create(steamid):
+def steam_create(steamid,username):
     create_account(steamID=steamid,
-                   country='ru')
+                   country='ru',
+                   username=username)
 
 def steam_auth(steamid,
                username):
@@ -27,8 +28,7 @@ def steam_auth(steamid,
     global user_session_id_counter
     user_session_id_counter+=1
     
-    data=platformlogin.do_platformlogin(username=username,
-                                        sessionid=user_session_id_counter,
+    data=platformlogin.do_platformlogin(sessionid=user_session_id_counter,
                                         last_matchID=server_values['counters']['match_id'],
                                         cfg_b=server_config['battleserver'],
                                         client_config=client_config,
@@ -42,6 +42,7 @@ def steam_auth(steamid,
                                         banState=banState)
     
     client_sessionCreate(sessionID=str(user_session_id_counter),
-                         accountID=account_data.id)
+                         accountID=account_data.id,
+                         username=username)
     
     return data

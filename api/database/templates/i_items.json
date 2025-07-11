@@ -690,7 +690,7 @@
         "entityVersion": 1,
         "itemDefinition.id": 1000,
         "profileID": null,
-        "durability": 500,
+        "durability": 10399,
         "durabilityType": 0,
         "metaData": "",
         "creationDate": 1629182644,
@@ -824,5 +824,19 @@
         "tradeID": -1,
         "permission": 15,
         "maxChargesPerItem": -1
-    }
+    },
+	{
+        "id": 996134896,
+        "entityVersion": 8,
+        "itemDefinition.id": 7246,
+        "profileID": null,
+        "durability": 1,
+        "durabilityType": 0,
+        "metaData": "{\"dlc\":1}",
+        "creationDate": 1629182644,
+        "locationID": 0,
+        "tradeID": -1,
+        "permission": 0,
+        "maxChargesPerItem": -1
+	}
 ]

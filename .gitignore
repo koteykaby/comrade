@@ -1,3 +1,5 @@
 ssl
 __pycache__
 parsed_protocols
+config
+comrade.db

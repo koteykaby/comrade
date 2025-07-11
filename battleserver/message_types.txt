@@ -1,0 +1,35 @@
+enum MessageType {
+    SEEK = 0x01,                      // 1  - SeekMessage
+    REQUEST_JOIN = 0x02,              // 2  - RequestJoinMessage
+    INTEGRITY_CHECK = 0x03,           // 3  - IntegrityCheckMessage
+    SEEK_RESPONSE = 0x04,             // 4  - SeekResponseMessage
+    REQUEST_JOIN_DENIED = 0x05,       // 5  - RequestJoinDeniedMessage
+    ADD_PEER = 0x06,                  // 6  - AddPeerMessage
+    REMOVE_PEER = 0x07,               // 7  - RemovePeerMessage
+    DROPOUT_PEER = 0x08,              // 8  - DropoutPeerMessage
+    GAME_DATA = 0x09,                 // 9  - GameDataMessage
+    MULTI_GAME_DATA = 0x0A,           // 10 - MultiGameDataMessage
+    GAME_VOICE = 0x0B,                // 11 - GameVoiceMessage
+    ROUTE_CHECK = 0x0C,               // 12 - RouteCheckMessage
+    NUDGE = 0x0D,                     // 13 - NudgeMessage
+    UNKNOWN_0E = 0x0E,                // 14 - Not implemented in switch
+    UNKNOWN_0F = 0x0F,                // 15 - Some special case (handled differently)
+    PROXY = 0x10,                     // 16 - ProxyMessage
+    PING = 0x11,                      // 17 - PingMessage
+    UNKNOWN_12 = 0x12,                // 18 - Not implemented in switch
+    LOBBY_RELAY = 0x13,               // 19 - LobbyRelayMessage
+    LOBBY_PING = 0x14,                // 20 - LobbyPingMessage
+    LOBBY_CONNECT = 0x15,             // 21 - LobbyConnectMessage
+    UNKNOWN_16 = 0x16,                // 22 - Not implemented in switch
+    GAME_DATA_AND_CHECKSUM = 0x17,    // 23 - GameDataAndChecksumMessage
+    UNKNOWN_18 = 0x18,                // 24 - Special handling case
+    START_OBSERVE_RESPONSE = 0x19,    // 25 - StartObserveResponseMessage
+    ACTIVATE_OBSERVER = 0x1A,         // 26 - ActivateObserverMessage
+    STOP_OBSERVE = 0x1B,              // 27 - StopObserveMessage
+    UNKNOWN_1C = 0x1C,                // 28 - Special handling case
+    SET_OBSERVABLE_PARAMETERS = 0x1D,  // 29 - SetObservableParametersMessage
+    ACTIVATE_OBSERVER_RESPONSE = 0x1E, // 30 - ActivateObserverResponseMessage
+    LEAVE_SIMULATION = 0x1F,          // 31 - LeaveSimulationMessage
+    UNKNOWN_20 = 0x20,                // 32 - Not implemented in switch
+    RELAY_BROADCAST = 0x21            // 33 - RelayBroadcastMessage
+};

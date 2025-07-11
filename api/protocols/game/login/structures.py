@@ -98,3 +98,27 @@ class PlatformSessionUpdateMessage:
     description: str
     host_id: int
     lobby_ids: any
+
+# information for peer information in the MatchStartMessage packet
+@dataclass
+class peer_values:
+    profileID: int 
+    unk_data: any
+    # 231430
+    # 231451
+    # 317850
+@dataclass
+class peer_definitions:
+    profile_id: str
+    peer_id: str
+@dataclass
+class peer_inventory:
+    profile_id: str
+    items: any
+    
+@dataclass
+class MatchStartMessage:
+    status_code: int
+    description: str
+    profile_id: int
+    other_data: any
