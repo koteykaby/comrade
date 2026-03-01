@@ -1,0 +1,64 @@
+In-game notifications are done with requesting /game/login/readSession
+
+To receive notification, game requests /game/login/readSession every second, and if there's no notifications,
+server send ackNum,[[]] as response
+
+If there's any notifications, server send ackNum,[[notification]] as response
+
+All notifications client can handle (dumped with IDA from ProcessNotification function (sub_141D0C630)):
+
+- Chat & Communication
+PersonalChatMessage
+ChannelChatMessage
+ChannelJoinMessage
+ChannelLeaveMessage
+OfflineMessageMessage
+MatchReceivedChatMessage
+
+- Social & Friends
+PresenceMessage
+FriendRequestMessage
+FriendAcceptMessage
+FriendRejectMessage
+FriendClearMessage
+IgnoreMessage
+ExtendInvitationMessage
+CancelInvitationMessage
+ReplyInvitationMessage
+
+- Matchmaking & Sessions
+MatchStartMessage
+MatchHostedMessage
+MatchObserveMessage
+PlatformSessionUpdateMessage
+SessionStatusMessage
+AutomatchStartPollingMessage
+AutomatchStopPollingMessage
+AutomatchGameMessage
+Automatch2PollingMessage
+Automatch2StopPollingMessage
+Automatch2GameMessage
+Automatch2LeaveMatchMessage
+
+- Clans (Crews)
+ClanChatMessage
+ClanMembershipRequestUpdateMessage
+ClanChangeClanMessage
+ClanMemberUpdateMessage
+ClanRemoveMessage
+ClanUpdateMessage
+ClanPermissionsUpdateMessage
+
+- Avatar & Items
+Avatar$AvatarCategoryMessage
+AvatarUpdateMessage
+AvatarDeletedMessage
+ItemLocationMessage
+ItemInstanceMessage
+
+- Gameplay & System
+GameResultNotificationMessage
+ChallengeUpdatedMessage
+CommunityEventChallengeUpdatedMessage
+ExtensionMessage
+OutdatedVersionMessage

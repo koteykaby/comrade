@@ -1,0 +1,22 @@
+{
+    "api": {
+        "address": "127.0.0.1",
+        "port": 443
+    },
+    "battleservers": [
+        {
+            "address": "127.0.0.1",
+            "ports": {
+                "bs_port": 27021,
+                "websocket_port": 27211, 
+                "out_of_band_port": 27212
+            },
+            "region": "comrade",
+            "name": null
+        }
+    ],
+    "ssl": {
+        "cert": "tools/ssl/coh2-api.reliclink.com.pem",
+        "key": "tools/ssl/coh2-api.reliclink.com-key.pem"
+    }
+}

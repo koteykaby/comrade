@@ -1,0 +1,4 @@
+ssl
+logs
+__pycache__
+db/server.db
