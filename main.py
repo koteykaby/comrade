@@ -54,7 +54,7 @@ async def game_news_getNews(): return await getNews.Handle()
 @api.get("/game/Achievement/getAvailableAchievements")
 async def game_achievement_getAvailableAchievements(): 
     result = await getAvailableAchievements.Handle()
-    return Response(content=result)
+    return result
 @api.post("/game/achievement/syncStats")
 async def game_achievement_syncStats(): return await syncStats.Handle()
 @api.get("/game/Achievement/getAchievements")
