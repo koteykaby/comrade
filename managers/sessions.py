@@ -21,7 +21,7 @@ def CreateSession(platformUserID: str) -> str:
         "platformUserID": platformUserID,
         "profileInfo": userData["profileInfo"],
         "ack": 0,
-        "notifications": deque(["PresenceMessage, ExtensionMessage"]) # ExtensionMessage was also here
+        "notifications": deque(["PresenceMessage"]) # ExtensionMessage was also here
     }
     
     logger.info(f"New session: {sessionID}:{platformUserID}")
