@@ -25,7 +25,27 @@ This project is community-driven dedicated server designed to play the game on L
 
 ## Usage
 
-See wiki.
+Here is a quick-start guide to running and playing the game.
+
+### Server
+
+1. Generate an SSL certificate and private key using the `certgen.py` script in the `tools` folder. Share the certificate with your peers.
+2. Configure the server by editing `config/services.json` (update the IPs to match your host).
+3. Run the server with `python ./main.py`.
+
+### Client
+
+1. Install the SSL certificate from your host. On Windows:
+    - Open `certmgr.msc`.
+    - Open `Trusted Root Certificate Authorities/Certificates`.
+    - Click `Action -> All Tasks -> Import` and import the certificate.
+2. Update the hosts file. On Windows:
+    - Open `C:/Windows/System32/drivers/etc` and open the `hosts` file with Notepad.
+    - Add `127.0.0.1 coh2-api.reliclink.com` to it.
+    > [!Note]
+    > Replace `127.0.0.1` with your server's host IP.
+    - Run `ipconfig /flushdns` in PowerShell.
+3. Run the game and play.
 
 ## Legal Disclaimer
 
