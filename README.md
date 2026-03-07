@@ -32,6 +32,8 @@ Here is a quick-start guide to running and playing the game.
 1. Generate an SSL certificate and private key using the `certgen.py` script in the `tools` folder. Share the certificate with your peers.
 2. Configure the server by editing `config/services.json` (update the IPs to match your host).
 3. Run the server with `python ./main.py`.
+4. Get and run the BattleServer. You can find it in our Discord. Command to start:
+    - `.\BattleServer.exe -simulationPeriod 25 -relayBroadcastPort 0 -bsPort 27021 -webSocketPort 27211 -sslCert "coh2-api.reliclink.com.pem" -sslKey "coh2-api.reliclink.com-key.pem"`
 
 ### Client
 
@@ -44,9 +46,7 @@ Here is a quick-start guide to running and playing the game.
     - Add `127.0.0.1 coh2-api.reliclink.com` to it.
     > ATTENTION! Replace `127.0.0.1` with your server's host IP.
     - Run `ipconfig /flushdns` in PowerShell.
-3. Get and run the BattleServer. You can find it in our Discord. Command to start:
-    - `.\BattleServer.exe -simulationPeriod 25 -relayBroadcastPort 0 -bsPort 27021 -webSocketPort 27211 -sslCert "coh2-api.reliclink.com.pem" -sslKey "coh2-api.reliclink.com-key.pem"`
-4. Run the game and play.
+3. Run the game and play.
 
 ## Legal Disclaimer
 
