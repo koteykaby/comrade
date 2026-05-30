@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request, Response, params
+from fastapi import FastAPI, Request, Response, params, responses
 import uvicorn
 
 from singletons import servicesConfig
 
 from common.logger import logger
 
+from routes.web.news import news
 from routes.game.login import platformlogin, readSession, logout
 from routes.game.news import getNews
 from routes.game.automatch import getAutomatchMap
@@ -35,6 +36,15 @@ async def debug_forceChangeState(id, state):
 @api.get("/debug/sessions")
 async def debug_sessions():
     return sessions
+
+# news
+# todo: separate all news (home, twitch, store)
+# in steam it won't shown because it uses https and we don't have a valid cert, but if you run the server with valid cert it will be available
+# looks like only for news we need other thread with other http server
+@api.get("/web/news", response_class=responses.HTMLResponse)
+async def web_news():
+    result = await news.Handle()
+    return Response(content=result, media_type="text/html")
 
 @api.post("/game/login/platformlogin")
 async def game_login_platformlogin(platformUserID, alias): return platformlogin.Handle(platformUserID, alias)
@@ -169,4 +179,6 @@ if __name__ == "__main__":
                 port=servicesConfig["api"]["port"], 
                 reload=False,
                 ssl_certfile=servicesConfig["ssl"]["cert"], 
-                ssl_keyfile=servicesConfig["ssl"]["key"])
+                ssl_keyfile=servicesConfig["ssl"]["key"],
+                log_config=None
+    )

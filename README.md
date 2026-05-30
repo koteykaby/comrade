@@ -42,7 +42,8 @@ Here is a quick-start guide to running and playing the game.
 2. Update the hosts file. On Windows:
     - Open `C:/Windows/System32/drivers/etc` and open the `hosts` file with Notepad.
     - Add `127.0.0.1 coh2-api.reliclink.com` to it.
-    > ATTENTION! Replace `127.0.0.1` with your server's host IP.
+    > [WARNING!]
+    > Replace `127.0.0.1` with your server's host IP.
     - Run `ipconfig /flushdns` in PowerShell.
 3. Get and run the BattleServer. You can find it in our Discord. Command to start:
     - `.\BattleServer.exe -simulationPeriod 25 -relayBroadcastPort 0 -bsPort 27021 -webSocketPort 27211 -sslCert "coh2-api.reliclink.com.pem" -sslKey "coh2-api.reliclink.com-key.pem"`

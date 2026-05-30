@@ -37,19 +37,19 @@
     ],
     [
         "WEB_NEWS_ENABLED",
-        "0"
+        "1"
     ],
     [
         "WEB_NEWS_URL_FORMAT_HOME_AD",
-        "https://ingame.companyofheroes.com/promotions/home#?profile_name=%251PROFILE_NAME%25&profile_alias=%252PROFILE_ALIAS%25&currency=%253CURRENCY%25&country=%254COUNTRY%25&lang=%255LANGUAGE%25&supply=%256FIRST_PERMANENT_ITEM_1000_DURABILITY%25"
+        "https://127.0.0.1/web/news"
     ],
     [
         "WEB_NEWS_URL_FORMAT_STORE",
-        "https://ingame.companyofheroes.com/promotions/store#?profile_name=%251PROFILE_NAME%25&profile_alias=%252PROFILE_ALIAS%25&currency=%253CURRENCY%25&country=%254COUNTRY%25&lang=%255LANGUAGE%25&supply=%256FIRST_PERMANENT_ITEM_1000_DURABILITY%25"
+        "https://127.0.0.1/web/news"
     ],
     [
         "WEB_NEWS_URL_FORMAT_HOME_TWITCH",
-        "https://ingame.companyofheroes.com/twitch/home#?profile_name=%251PROFILE_NAME%25&profile_alias=%252PROFILE_ALIAS%25&currency=%253CURRENCY%25&country=%254COUNTRY%25&lang=%255LANGUAGE%25&supply=%256FIRST_PERMANENT_ITEM_1000_DURABILITY%25"
+        "https://127.0.0.1/web/news"
     ],
     [
         "RL_USE_WEBSOCKET_PERCENT",
