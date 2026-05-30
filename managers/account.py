@@ -7,6 +7,7 @@ from common.logger import logger
 
 DB_PATH = 'db/server.db'
 DEFINITIONS_DB_PATH = 'db/game/item_definitions.sqlite3'
+INITIAL_PROFILE_ID = 1001
 
 class DatabaseManager:
     def __init__(self, db_path):
@@ -41,11 +42,11 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
-    def _generate_profile_id(self):
-        while True:
-            new_id = random.randint(1000000, 9999999)
-            if not self.get_account_by_profile_id(new_id):
-                return new_id
+    def _generate_profile_id(self, cursor) -> int:
+        cursor.execute("SELECT MAX(profile_id) FROM users")
+        row = cursor.fetchone()
+        last_id = row[0] if row[0] is not None else INITIAL_PROFILE_ID - 1
+        return last_id + 1
 
     def _get_all_item_definitions(self):
         if not os.path.exists(DEFINITIONS_DB_PATH):
@@ -106,7 +107,16 @@ class DatabaseManager:
             logger.info(f"Granted {len(items_to_insert)} items to {profile_id}.")
 
     def create_account(self, platform_user_id: str, alias: str):
-        profile_id = self._generate_profile_id()
+        conn = self._get_conn()
+        cursor = conn.cursor()
+
+        try:
+            profile_id = self._generate_profile_id(cursor)
+        except Exception as e:
+            logger.error(f"Failed to generate profile id: {e}")
+            conn.close()
+            return None
+
         final_alias = alias if alias else f"Player_{profile_id}"
 
         new_account_data = {
@@ -143,9 +153,6 @@ class DatabaseManager:
             "privacySettings": [],
             "inventoryFile": ""
         }
-
-        conn = self._get_conn()
-        cursor = conn.cursor()
 
         try:
             cursor.execute(
