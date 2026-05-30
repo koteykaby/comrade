@@ -3,7 +3,7 @@ import json
 
 from common.logger import logger
 from models.advertisements import Advertisement, Peer
-from managers.matchmaking import advertisements
+from managers.matchmaking import ADVERTISEMENT_FIELDS, advertisements
 
 @dataclass
 class response:
@@ -17,7 +17,11 @@ async def Handle(match_ids):
     
     filtered_advs = [
         Advertisement(
-            **{k: v for k, v in adv.items() if k != "peers"},
+            **{
+                k: v
+                for k, v in adv.items()
+                if k in ADVERTISEMENT_FIELDS and k != "peers"
+            },
             peers=[Peer(**p) for p in adv["peers"]],
         )
         for adv in advertisements

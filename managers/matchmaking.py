@@ -2,6 +2,8 @@ import json
 import time
 from typing import Any
 from common.logger import logger
+from models.advertisements import Advertisement
+from dataclasses import fields
 
 DEFAULT_ROUTE = "/10.0.7.136"
 INITIAL_MATCH_ID = 31005
@@ -310,3 +312,5 @@ def CleanupEmptyAdvertisements(
     grace_seconds: float,
 ) -> list[int]:
     return _manager.cleanup_empty_advertisements(referenced_ids, grace_seconds)
+
+ADVERTISEMENT_FIELDS = {f.name for f in fields(Advertisement)}
