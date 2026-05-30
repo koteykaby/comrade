@@ -51,7 +51,9 @@ async def web_news():
     return Response(content=result, media_type="text/html")
 
 @api.post("/game/login/platformlogin")
-async def game_login_platformlogin(platformUserID, alias): return platformlogin.Handle(platformUserID, alias)
+async def game_login_platformlogin(request: Request):
+    params = dict(request.query_params)
+    return platformlogin.Handle(params.get("platformUserID", ""), params.get("alias", ""))
 @api.post("/game/login/readSession")
 async def game_login_readSession(sessionID): 
     result = await readSession.Handle(sessionID)

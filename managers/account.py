@@ -212,6 +212,20 @@ class DatabaseManager:
         conn.commit()
         conn.close()
         logger.debug(f"Account {steam_id} saved to DB.")
+
+    def update_profile_alias(self, platform_user_id: str, alias: str) -> dict | None:
+        account_data = self.get_account_by_steam_id(platform_user_id)
+        if account_data is None or not alias:
+            return account_data
+
+        current_alias = account_data["profileInfo"].get("alias")
+        if current_alias == alias:
+            return account_data
+
+        account_data["profileInfo"]["alias"] = alias
+        self.save_account(account_data)
+        logger.info(f"Updated alias for {platform_user_id}: '{current_alias}' -> '{alias}'")
+        return account_data
         
     def update_inventory_item(self, profile_id: int, item_data: dict):
         """Обновляет JSON данные конкретного предмета в инвентаре"""

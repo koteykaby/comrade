@@ -6,6 +6,8 @@ from common.serialize import relicjson
 from models.user import accountInfo, profileInfo, additionalProfileInfo
 from models.services import battleserver
 
+from common.logger import logger
+
 from managers.sessions import CreateSession
 from managers.account import GetAccount, db_manager
 from managers.matchmaking import lastMatchID
@@ -58,11 +60,13 @@ def Handle(platformUserID: str, alias: str):
     userData = GetAccount(platformUserID)
     
     if not userData:
-        print(f"User {platformUserID} not found. Registering as '{alias}'...")
+        logger.info(f"User {platformUserID} not found. Registering as '{alias}'...")
         userData = db_manager.create_account(platformUserID, alias)
         
         if not userData:
              raise Exception("Failed to create user account database record.")
+    else:
+        userData = db_manager.update_profile_alias(platformUserID, alias)
 
     sessionID = CreateSession(platformUserID)
     
