@@ -5,7 +5,7 @@ from time import time
 
 from common.logger import logger
 
-from managers.sessions import GetSession, GetSessionByProfileID
+from managers.sessions import GetSession, GetSessionByProfileID, TouchSession
 from managers.account import GetAccount
 from managers.matchmaking import GetAdvertisement
 
@@ -51,6 +51,8 @@ async def Handle(sessionID: str, timeout: int = 30):
     end_time = asyncio.get_event_loop().time() + timeout
 
     while not notifications:
+        TouchSession(sessionID)
+
         if sessionData["notifications"]:
             notif = sessionData["notifications"].popleft()
             sessionData["ack"] += 1

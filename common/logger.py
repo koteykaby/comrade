@@ -95,3 +95,8 @@ if not logger.handlers:
         uv_logger.handlers.extend(logger.handlers)
         uv_logger.setLevel(logging.DEBUG)
         uv_logger.propagate = False
+        
+print("☭ COMRADE is running! ☭")
+print("Authored by @koteyka_by in Discord")
+print("Discord: https://discord.com/KTx7uhWsTB")
+print()

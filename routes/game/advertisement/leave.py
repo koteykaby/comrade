@@ -20,22 +20,14 @@ async def Handle(sessionID, advertisementID):
         logger.error(f"RemovePeer: Advertisement {advertisementID} not found")
         return False
 
-    initial_peer_count = len(advertisement["peers"])
-    
-    advertisement["peers"] = [
-        peer for peer in advertisement["peers"] 
-        if peer["profileID"] != int(profile_id)
-    ]
-
-    if len(advertisement["peers"]) < initial_peer_count:
+    if matchmaking.RemovePeerFromAdvertisement(advertisementID, int(profile_id)):
         logger.debug(f"Removed peer {profile_id} from lobby {advertisementID}")
-        
         sessions.RemoveFromAdvertisement(sessionID)
-        
-        if len(advertisement["peers"]) == 0:
-           await matchmaking.DeleteAdvertisement(advertisementID)
-        
+
+        if not advertisement["peers"]:
+            await matchmaking.DeleteAdvertisement(advertisementID)
+
         return True
-    else:
-        logger.warning(f"RemovePeer: Peer {profile_id} was not found in lobby {advertisementID}")
-        return False
+
+    logger.warning(f"RemovePeer: Peer {profile_id} was not found in lobby {advertisementID}")
+    return False

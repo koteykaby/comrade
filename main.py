@@ -1,9 +1,13 @@
+from contextlib import asynccontextmanager
+import asyncio
+
 from fastapi import FastAPI, Request, Response, params, responses
 import uvicorn
 
 from singletons import servicesConfig
 
 from common.logger import logger
+from managers.cleanup import cleanup_loop
 
 from routes.web.news import news
 from routes.game.login import platformlogin, readSession, logout
@@ -23,19 +27,19 @@ from routes.game.party import peerAdd, peerUpdate
 from managers.matchmaking import advertisements
 from managers.sessions import sessions
 
-api = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    cleanup_task = asyncio.create_task(cleanup_loop())
+    try:
+        yield
+    finally:
+        cleanup_task.cancel()
+        try:
+            await cleanup_task
+        except asyncio.CancelledError:
+            pass
 
-# Endpoints for debugging
-@api.get("/debug/findAdvertisements")
-async def debug_findAdvertisements():
-    return advertisements
-@api.get("/debug/forceChangeState")
-async def debug_forceChangeState(id, state):
-    await updateState.Handle(id, state)
-    return "CHANGED!"
-@api.get("/debug/sessions")
-async def debug_sessions():
-    return sessions
+api = FastAPI(lifespan=lifespan)
 
 # news
 # todo: separate all news (home, twitch, store)

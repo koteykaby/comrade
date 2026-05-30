@@ -49,7 +49,7 @@ async def Handle(params):
         if i["region"] == advertisement["relayRegion"]:
             battleserverInfo = i
         else: 
-            logger.warning(f"Couldn't load battleserver info for region {advertisement["relayRegion"]}, first one will be used")
+            logger.warning(f"Couldn't load battleserver info for region {advertisement["relayRegion"]} (or it's empty), first one will be used")
             battleserverInfo = servicesConfig["battleservers"][0]
             
     logger.debug(f"Will be used battleserver: {battleserverInfo}")

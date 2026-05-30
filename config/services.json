@@ -18,5 +18,10 @@
     "ssl": {
         "cert": "tools/ssl/coh2-api.reliclink.com.pem",
         "key": "tools/ssl/coh2-api.reliclink.com-key.pem"
+    },
+    "cleanup": {
+        "intervalSeconds": 60,
+        "sessionTtlSeconds": 1800,
+        "emptyLobbyGraceSeconds": 30
     }
 }
