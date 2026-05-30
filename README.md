@@ -44,10 +44,11 @@ Here is a quick-start guide to running and playing the game.
 2. Update the hosts file. On Windows:
     - Open `C:/Windows/System32/drivers/etc` and open the `hosts` file with Notepad.
     - Add `127.0.0.1 coh2-api.reliclink.com` to it.
-    > [WARNING!]
-    > Replace `127.0.0.1` with your server's host IP.
     - Run `ipconfig /flushdns` in PowerShell.
 3. Run the game and play.
+
+> [!IMPORTANT]
+> Replace `127.0.0.1` with your host IP when editing hosts file.
 
 ## Legal Disclaimer
 
