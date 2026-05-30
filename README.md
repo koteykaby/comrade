@@ -10,11 +10,11 @@ This project is community-driven dedicated server designed to play the game on L
 - Singleplayer missions (Theater of War, Campaign)
 - Inventory (all items are unlocked)
 - Matchmaking and ToW Co-op missions (requires external BattleServer)
+- Save stats locally
 
 ## What doesn't works
 
 - Authenticate for other platforms such as Xbox
-- Saving stats locally in the game
 - Observing (not implemented)
 - Leveling
 - Leaderboards
